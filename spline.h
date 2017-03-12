@@ -1,9 +1,21 @@
-spline
-======
+// (c) Copyright 2017, Sean Connelly (@voidqk), http://syntheti.cc
+// MIT License
+// Project Home: https://github.com/voidqk/spline
 
-Spline functions in different languages (Catmull-Rom spline).
+// Catmull-Rom spline implementation (2d, 3d, 4d)
 
-```c
+#ifndef SPLINE__H
+#define SPLINE__H
+
+#include <stdbool.h>
+
+// vector definitions can come from NVQM (https://github.com/voidqk/nvqm), or just added here
+#ifndef NVQM__H
+typedef struct { float v[2]; } vec2;
+typedef struct { float v[3]; } vec3;
+typedef struct { float v[4]; } vec4;
+#endif // NVQM__H
+
 // `p0`, `p1`, `p2`, `p3` are points
 // `tension` is number between 0 and 1 (0.5f is good default)
 // `segs` is the number of segments to return via `out`
@@ -26,4 +38,5 @@ int splinesize(int pointslen, int segs, bool close);
 void spline2d(int pointslen, const vec2 *points, float tension, int segs, bool close, vec2 *out);
 void spline3d(int pointslen, const vec3 *points, float tension, int segs, bool close, vec3 *out);
 void spline4d(int pointslen, const vec4 *points, float tension, int segs, bool close, vec4 *out);
-```
+
+#endif // SPLINE__H

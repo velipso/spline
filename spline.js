@@ -210,7 +210,7 @@ var spline2d, spline3d, spline4d;
 				return [];
 			else if (L == 1)
 				return [P[0].concat()];
-			else if (L === 2){
+			else if (L == 2){
 				if (close){
 					return spline(P[1], P[0], P[1], P[0], tension, segs).concat(
 						spline(P[0], P[1], P[0], P[1], tension, segs));
@@ -221,7 +221,7 @@ var spline2d, spline3d, spline4d;
 			var res;
 			if (close){
 				res = spline(P[L - 1], P[0], P[1], P[2], tension, segs);
-				if (L === 3){
+				if (L == 3){
 					return res.concat(
 						spline(P[0], P[1], P[2], P[0], tension, segs)).concat(
 						spline(P[1], P[2], P[0], P[1], tension, segs));
@@ -229,8 +229,10 @@ var spline2d, spline3d, spline4d;
 			}
 			else{
 				res = spline(P[0], P[0], P[1], P[2], tension, segs);
-				if (L === 3)
-					return res.concat(spline(P[0], P[1], P[2], P[2], tension, segs));
+				if (L == 3){
+					return res.concat(spline(P[0], P[1], P[2], P[2], tension, segs)).concat(
+						[P[0].concat()]);
+				}
 			}
 
 			for (var i = 0; i < L - 3; i++)
@@ -242,7 +244,8 @@ var spline2d, spline3d, spline4d;
 					spline(P[L - 2], P[L - 1], P[0], P[1], tension, segs));
 			}
 			return res.concat(
-				spline(P[L - 3], P[L - 2], P[L - 1], P[L - 1], tension, segs));
+				spline(P[L - 3], P[L - 2], P[L - 1], P[L - 1], tension, segs)).concat(
+				P[L - 1].concat());
 		};
 	}
 	spline2d = makefunc(spline2d_segment);
