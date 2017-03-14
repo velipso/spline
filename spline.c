@@ -237,22 +237,10 @@ int splinesize(int pointslen, int segs, bool close){
 			return;                                                                                \
 		}                                                                                          \
 		/* */                                                                                      \
-		if (close){                                                                                \
+		if (close)                                                                                 \
 			spline(P[L - 1], P[0], P[1], P[2], tension, segs, &out[0]);                            \
-			if (L == 3){                                                                           \
-				spline(P[0], P[1], P[2], P[0], tension, segs, &out[segs]);                         \
-				spline(P[1], P[2], P[0], P[1], tension, segs, &out[segs * 2]);                     \
-				return;                                                                            \
-			}                                                                                      \
-		}                                                                                          \
-		else{                                                                                      \
+		else                                                                                       \
 			spline(P[0], P[0], P[1], P[2], tension, segs, &out[0]);                                \
-			if (L == 3){                                                                           \
-				spline(P[0], P[1], P[2], P[2], tension, segs, &out[segs]);                         \
-				out[segs * 2] = P[2];                                                              \
-				return;                                                                            \
-			}                                                                                      \
-		}                                                                                          \
 		/* */                                                                                      \
 		for (int i = 0; i < L - 3; i++)                                                            \
 			spline(P[i], P[i + 1], P[i + 2], P[i + 3], tension, segs, &out[(i + 1) * segs]);       \

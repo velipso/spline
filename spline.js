@@ -219,21 +219,10 @@ var spline2d, spline3d, spline4d;
 			}
 
 			var res;
-			if (close){
+			if (close)
 				res = spline(P[L - 1], P[0], P[1], P[2], tension, segs);
-				if (L == 3){
-					return res.concat(
-						spline(P[0], P[1], P[2], P[0], tension, segs)).concat(
-						spline(P[1], P[2], P[0], P[1], tension, segs));
-				}
-			}
-			else{
+			else
 				res = spline(P[0], P[0], P[1], P[2], tension, segs);
-				if (L == 3){
-					return res.concat(spline(P[0], P[1], P[2], P[2], tension, segs)).concat(
-						[P[0].concat()]);
-				}
-			}
 
 			for (var i = 0; i < L - 3; i++)
 				res = res.concat(spline(P[i], P[i + 1], P[i + 2], P[i + 3], tension, segs));
