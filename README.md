@@ -3,6 +3,8 @@ spline
 
 Spline functions in different languages (Catmull-Rom spline).
 
+C and JavaScript implementations.
+
 ```c
 // `p0`, `p1`, `p2`, `p3` are points
 // `tension` is number between 0 and 1 (0.5f is good default)
