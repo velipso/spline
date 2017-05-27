@@ -233,8 +233,8 @@ var spline2d, spline3d, spline4d;
 					spline(P[L - 2], P[L - 1], P[0], P[1], tension, segs));
 			}
 			return res.concat(
-				spline(P[L - 3], P[L - 2], P[L - 1], P[L - 1], tension, segs)).concat(
-				P[L - 1].concat());
+				spline(P[L - 3], P[L - 2], P[L - 1], P[L - 1], tension, segs)
+			).concat([P[L - 1].concat()]);
 		};
 	}
 	spline2d = makefunc(spline2d_segment);
