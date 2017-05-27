@@ -130,8 +130,8 @@ void spline3d_segment(vec3 p0, vec3 p1, vec3 p2, vec3 p3, float tension, int seg
 	}
 }
 
-static inline float tb4d(float ax, float ay, float az, float aw, float bx, float by, float bz, float bw,
-	float tension){
+static inline float tb4d(float ax, float ay, float az, float aw, float bx, float by, float bz,
+	float bw, float tension){
 	float dx = bx - ax;
 	float dy = by - ay;
 	float dz = bz - az;
